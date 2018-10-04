@@ -1,5 +1,6 @@
 package com.punctualpanda.punctualpanda.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,18 +19,19 @@ public class TodoTaskServiceImpl implements ITodoTaskService{
 	}
 
 	@Override
-	public void addTodoTask(String userName, String taskName) {
-		if(userName == null || userName == null){
-			return;
-		}
-
+	public TodoTask addTodoTask(String userName, String taskName, Date dueDate) {
 		//TODO: remove direct dependency while creating objects. 
-		
 		TodoTask todoTask = new TodoTask();
+
+		if(userName == null || userName == null){
+			return todoTask;
+		}
+		
 		todoTask.setTaskName(taskName);
 		todoTask.setUserName(userName);  
-		todoTaskRepository.save(todoTask);
-	
+		todoTask.setDueDate(dueDate);
+		todoTask = todoTaskRepository.save(todoTask);
+		return todoTask;
 	}
 
 	@Override

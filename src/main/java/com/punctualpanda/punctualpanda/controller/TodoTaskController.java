@@ -20,8 +20,9 @@ public class TodoTaskController {
 		//todoTaskService.addTodoTask(userName, taskName);
 		System.out.println("Add Task is called!!");
 		System.out.println("Task submitted:  "+todoTask.getTaskName());
-		todoTaskService.addTodoTask(todoTask.getUserName(), todoTask.getTaskName());
+		System.out.println("Datesubmitted:  "+ todoTask.getDueDate());
 		
+		todoTask = todoTaskService.addTodoTask(todoTask.getUserName(), todoTask.getTaskName(), todoTask.getDueDate());
 		model.put("alltasks",todoTaskService.getAllTodoTasks());
 		model.put("todoTask", new TodoTask());
 		
