@@ -13,7 +13,7 @@ public class PunctualpandaApplication {
 	
 	@Bean
 	public ITodoTaskService todoTaskService(){
-		//TODO: direct dependency. Can introduce some creation pattern
+		//TODO: remove this direct dependency. Can introduce some creation pattern
 		return new TodoTaskServiceImpl();
 	}
 	
