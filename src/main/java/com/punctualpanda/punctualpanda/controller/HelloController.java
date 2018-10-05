@@ -4,6 +4,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.punctualpanda.punctualpanda.model.TodoTask;
@@ -25,14 +26,22 @@ public class HelloController {
 	}
 	
 	@RequestMapping("/hello")
-	public String hello(Map<String, Object> model){
+	public String hello(@ModelAttribute("todoTask") TodoTask todoTask, Map<String, Object> model){
 		System.out.println("hello function is called!!");
 		System.out.println("todoTaskService.getAllTodoTasks() returns: "+todoTaskService.getAllTodoTasks().size());
 		
 //		todoTaskService.addTodoTask("TestUser", "Test Task.. 1 ");
 //		System.out.println("todoTaskService.getAllTodoTasks() returns: "+todoTaskService.getAllTodoTasks().size());
 		model.put("alltasks",todoTaskService.getAllTodoTasks());
-		model.put("todoTask", new TodoTask());
+		model.put("todoTaskFromLogin", todoTask);
+		model.put("userName", todoTask.getUserName());
 		return "hello";
 	}
+	
+	@RequestMapping("/login")
+	public String login(Map<String, Object> model){
+		System.out.println("Login is called!!");
+		return "login";
+	}
+
 }
