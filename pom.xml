@@ -5,8 +5,8 @@
 
 	<groupId>com.punctualpanda</groupId>
 	<artifactId>punctualpanda</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<version>0.0.2-SNAPSHOT</version>
+	<packaging>war</packaging>
 
 	<name>punctualpanda</name>
 	<description>Punctual Panda Todo App</description>
@@ -51,6 +51,7 @@
 		<dependency>
 		    <groupId>org.apache.tomcat.embed</groupId>
 		    <artifactId>tomcat-embed-jasper</artifactId>
+		    <scope>provided</scope>
 		</dependency>	 	
 	    <dependency>
 	        <groupId>javax.servlet</groupId>
