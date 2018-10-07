@@ -60,4 +60,36 @@ public class TodoTask{
 		this.dueDate = dueDate;
 	}
 	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((taskName == null) ? 0 : taskName.hashCode());
+		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof TodoTask))
+			return false;
+		TodoTask other = (TodoTask) obj;
+		if (taskName == null) {
+			if (other.taskName != null)
+				return false;
+		} else if (!taskName.equals(other.taskName))
+			return false;
+		if (userName == null) {
+			if (other.userName != null)
+				return false;
+		} else if (!userName.equals(other.userName))
+			return false;
+		return true;
+	}
+
+	
 }
